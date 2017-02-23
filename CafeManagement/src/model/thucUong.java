@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.Objects;
+
 /**
  *
  * @author BaoLong
@@ -71,6 +73,56 @@ public class thucUong {
 
     public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
+    }
+
+    @Override
+    public String toString() {
+        return "thucUong{" + "thucUongID=" + thucUongID + ", loaiThucUongID=" + loaiThucUongID + ", tenThucUong=" + tenThucUong + ", gia=" + gia + ", donViTinh=" + donViTinh + ", soLuong=" + soLuong + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.thucUongID);
+        hash = 53 * hash + Objects.hashCode(this.loaiThucUongID);
+        hash = 53 * hash + Objects.hashCode(this.tenThucUong);
+        hash = 53 * hash + this.gia;
+        hash = 53 * hash + Objects.hashCode(this.donViTinh);
+        hash = 53 * hash + this.soLuong;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final thucUong other = (thucUong) obj;
+        if (this.gia != other.gia) {
+            return false;
+        }
+        if (this.soLuong != other.soLuong) {
+            return false;
+        }
+        if (!Objects.equals(this.thucUongID, other.thucUongID)) {
+            return false;
+        }
+        if (!Objects.equals(this.loaiThucUongID, other.loaiThucUongID)) {
+            return false;
+        }
+        if (!Objects.equals(this.tenThucUong, other.tenThucUong)) {
+            return false;
+        }
+        if (!Objects.equals(this.donViTinh, other.donViTinh)) {
+            return false;
+        }
+        return true;
     }
     
     
