@@ -16,6 +16,7 @@ public class CafeManagement {
      */
     public static void main(String[] args) {
         System.out.println("Ta Quang Hoang");
+        System.out.println("Tran Ngoc Bao Long");
         // TODO code application logic here
     }
     
