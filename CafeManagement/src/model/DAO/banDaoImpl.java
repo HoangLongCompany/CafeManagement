@@ -1,0 +1,112 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package model.DAO;
+
+import Connection.DBConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.ban;
+
+/**
+ *
+ * @author BaoLong
+ */
+public  class banDaoImpl implements banDao{
+    
+    
+    private Connection conn;
+    private PreparedStatement pst;
+    private ResultSet rs;
+    
+    public banDaoImpl(){
+        
+        
+    }
+    
+    @Override
+    public void add(ban b) {
+        conn = DBConnection.getConnection();
+        String sql ="INSERT INTO ban(BanID,TenBan,KhuVucID,TrangThai,GhiChu) VALUES (?,?,?,?,?)";
+        try {
+            pst= conn.prepareStatement(sql);
+            pst.setString(1, b.getBanID());
+            pst.setString(2, b.getTenBan());
+            pst.setString(3, b.getKhuVucID());
+            pst.setInt(4, b.getTrangThai());
+            pst.setString(5, b.getGhiChu());
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(banDaoImpl.class.getName()).log(Level.SEVERE, null, e);
+        }
+        
+    }
+
+    @Override
+    public void update(ban b) {
+        conn = DBConnection.getConnection();
+        String sql = "UPDATE ban SET TenBan='"+b.getTenBan()+"',KhuVucID='"+b.getKhuVucID()+"',TrangThai='"+b.getTrangThai()+"',GhiChu='"+b.getGhiChu()+"'";
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(banDaoImpl.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+
+    @Override
+    public void delete(String banID) {
+        conn = DBConnection.getConnection();
+        String sql = "DELETE FROM ban WHERE BanID='"+banID+"'";
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(banDaoImpl.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+
+    @Override
+    public ban getBan(String banID) {
+        ban b = null;
+        conn = DBConnection.getConnection();
+        String sql = "SELECT * FROM ban WHERE BanID='"+banID+"'";
+        try {
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while (rs.next()) {                
+                b = new ban(rs.getString("BanID"), rs.getString("TenBan"), rs.getString("KhuVucID"), rs.getInt("TrangThai"), rs.getString("GhiChu"));                
+            }            
+        } catch (SQLException e) {
+            Logger.getLogger(banDaoImpl.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return b;
+    }
+
+    @Override
+    public List<ban> getAll() {
+        List<ban> list = null;
+        ban b;
+        conn = DBConnection.getConnection();
+        String sql = "SELECT * FROM ban";
+        try {
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while (rs.next()) {                
+                b = new ban(rs.getString("BanID"), rs.getString("TenBan"), rs.getString("KhuVucID"), rs.getInt("TrangThai"), rs.getString("GhiChu"));
+                list.add(b);
+            }
+        }catch (SQLException e) {
+            Logger.getLogger(banDaoImpl.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return list;
+    }
+    
+}
