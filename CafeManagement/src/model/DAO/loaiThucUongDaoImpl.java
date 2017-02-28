@@ -14,30 +14,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.ban;
+import model.loaiThucUong;
 
 /**
  *
- * @author BaoLong
+ * @author pc
  */
-public  class banDaoImpl implements banDao{
-    
-    
+public class loaiThucUongDaoImpl implements loaiThucUongDao{
+
     private Connection conn;
     private PreparedStatement pst;
     private ResultSet rs;
     
     @Override
-    public void add(ban b) {
+    public void add(loaiThucUong loaiTU) {
         conn = DBConnection.getConnection();
-        String sql ="INSERT INTO tb_ban(BanID,TenBan,KhuVucID,TrangThai,GhiChu) VALUES (?,?,?,?,?)";
+        String sql ="INSERT INTO tb_loaithucuong(LoaiThucUongID,TenLoaiThucUong) VALUES (?,?)";
         try {
             pst= conn.prepareStatement(sql);
-            pst.setString(1, b.getBanID());
-            pst.setString(2, b.getTenBan());
-            pst.setString(3, b.getKhuVucID());
-            pst.setInt(4, b.getTrangThai());
-            pst.setString(5, b.getGhiChu());
+            pst.setString(1, loaiTU.getLoaiThucUongID());
+            pst.setString(2, loaiTU.getTenLoaiThucUong());
             pst.executeUpdate();
         } catch (SQLException e) {
             Logger.getLogger(banDaoImpl.class.getName()).log(Level.SEVERE, null, e);
@@ -45,11 +41,10 @@ public  class banDaoImpl implements banDao{
     }
 
     @Override
-    public void update(ban b) {
+    public void update(loaiThucUong loaiTU) {
         conn = DBConnection.getConnection();
-        String sql = "UPDATE tb_ban SET TenBan='"+b.getTenBan()
-                +"',KhuVucID='"+b.getKhuVucID()+"',TrangThai='"
-                +b.getTrangThai()+"',GhiChu='"+b.getGhiChu()+"'";
+        String sql = "UPDATE tb_loaithucuong SET TenBan='"+loaiTU.getTenLoaiThucUong()+"' where "
+                + "LoaiThucUongID='"+loaiTU.getLoaiThucUongID()+"'";
         try {
             pst = conn.prepareStatement(sql);
             pst.executeUpdate();
@@ -59,9 +54,9 @@ public  class banDaoImpl implements banDao{
     }
 
     @Override
-    public void delete(String banID) {
+    public void delete(String loaiTUID) {
         conn = DBConnection.getConnection();
-        String sql = "DELETE FROM ban WHERE BanID='"+banID+"'";
+        String sql = "DELETE FROM tb_loaithucuong WHERE LoaiThucUongID='"+loaiTUID+"'";
         try {
             pst = conn.prepareStatement(sql);
             pst.executeUpdate();
@@ -71,45 +66,45 @@ public  class banDaoImpl implements banDao{
     }
 
     @Override
-    public ban getBan(String banID) {
-        ban b = null;
+    public loaiThucUong getLoaiThucUong(String loaiTUID) {
+        loaiThucUong loaiTU = null;
         conn = DBConnection.getConnection();
-        String sql = "SELECT * FROM ban WHERE BanID='"+banID+"'";
+        String sql = "SELECT * FROM tb_loaithucuong WHERE LoaiThucUongID='"+loaiTUID+"'";
         try {
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             while (rs.next()) {                
-                b = new ban(rs.getString("BanID"), rs.getString("TenBan"), rs.getString("KhuVucID"), rs.getInt("TrangThai"), rs.getString("GhiChu"));                
+            loaiTU = new loaiThucUong(rs.getString("LoaiThucUongID"), rs.getString("TenLoaiThucUong"));
             }            
         } catch (SQLException e) {
             Logger.getLogger(banDaoImpl.class.getName()).log(Level.SEVERE, null, e);
         }
-        return b;
+        return loaiTU;
     }
 
     @Override
-    public List<ban> getAll() {
-        List<ban> list = new ArrayList<>();
-        ban b;
+    public List<loaiThucUong> getAll() {
+        List<loaiThucUong> list = new ArrayList<>();
         conn = DBConnection.getConnection();
-        String sql = "SELECT * FROM ban";
+        String sql = "SELECT * FROM tb_loaithucuong";
         try {
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
-            while (rs.next()) {                
-                b = new ban(rs.getString("BanID"), rs.getString("TenBan"), rs.getString("KhuVucID"), rs.getInt("TrangThai"), rs.getString("GhiChu"));
-                list.add(b);
-            }
-        }catch (SQLException e) {
+            while (rs.next()) {   
+            loaiThucUong loaiTU = new loaiThucUong();
+            loaiTU = new loaiThucUong(rs.getString("LoaiThucUongID"), rs.getString("TenLoaiThucUong"));
+            list.add(loaiTU);
+            }            
+        } catch (SQLException e) {
             Logger.getLogger(banDaoImpl.class.getName()).log(Level.SEVERE, null, e);
         }
         return list;
-    }   
+    }
     public static void main(String[] args) {
-        ban b = new ban("B1","Ban 1" , "KV1", 0, null);
-        banDaoImpl banDao = new banDaoImpl();
-        banDao.add(b);
-        System.out.println("ok"); 
-                
-    }        
+        loaiThucUongDaoImpl loaiThucUongDao = new loaiThucUongDaoImpl();
+        loaiThucUong l = new loaiThucUong("CF","Ca Phe");
+        loaiThucUongDao.add(l);
+        System.out.println("ok");
+    }
+            
 }
