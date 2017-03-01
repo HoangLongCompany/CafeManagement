@@ -61,7 +61,7 @@ public  class banDaoImpl implements banDao{
     @Override
     public void delete(String banID) {
         conn = DBConnection.getConnection();
-        String sql = "DELETE FROM ban WHERE BanID='"+banID+"'";
+        String sql = "DELETE FROM tb_ban WHERE BanID='"+banID+"'";
         try {
             pst = conn.prepareStatement(sql);
             pst.executeUpdate();
@@ -74,12 +74,14 @@ public  class banDaoImpl implements banDao{
     public ban getBan(String banID) {
         ban b = null;
         conn = DBConnection.getConnection();
-        String sql = "SELECT * FROM ban WHERE BanID='"+banID+"'";
+        String sql = "SELECT * FROM tb_ban WHERE BanID='"+banID+"'";
         try {
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             while (rs.next()) {                
-                b = new ban(rs.getString("BanID"), rs.getString("TenBan"), rs.getString("KhuVucID"), rs.getInt("TrangThai"), rs.getString("GhiChu"));                
+                b = new ban(rs.getString("BanID"), 
+                rs.getString("TenBan"), rs.getString("KhuVucID"),
+                rs.getInt("TrangThai"), rs.getString("GhiChu"));                
             }            
         } catch (SQLException e) {
             Logger.getLogger(banDaoImpl.class.getName()).log(Level.SEVERE, null, e);
@@ -92,7 +94,7 @@ public  class banDaoImpl implements banDao{
         List<ban> list = new ArrayList<>();
         ban b;
         conn = DBConnection.getConnection();
-        String sql = "SELECT * FROM ban";
+        String sql = "SELECT * FROM tb_ban";
         try {
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();

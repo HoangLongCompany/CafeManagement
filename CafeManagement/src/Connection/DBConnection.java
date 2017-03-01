@@ -17,7 +17,7 @@ public class DBConnection {
      public static Connection getConnection(){
         Connection connect = null;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             connect=DriverManager.getConnection("jdbc:mysql://localhost:3306/cafemanagement","root","");
             System.out.println("Thanh Cong");
         } catch (ClassNotFoundException e) {
