@@ -30,7 +30,7 @@ public  class banDaoImpl implements banDao{
     @Override
     public void add(ban b) {
         conn = DBConnection.getConnection();
-        String sql ="INSERT INTO tb_ban(BanID,TenBan,KhuVucID,TrangThai,GhiChu) VALUES (?,?,?,?,?)";
+        String sql ="INSERT INTO tb_ban VALUES (?,?,?,?,?)";
         try {
             pst= conn.prepareStatement(sql);
             pst.setString(1, b.getBanID());
@@ -49,7 +49,7 @@ public  class banDaoImpl implements banDao{
         conn = DBConnection.getConnection();
         String sql = "UPDATE tb_ban SET TenBan='"+b.getTenBan()
                 +"',KhuVucID='"+b.getKhuVucID()+"',TrangThai='"
-                +b.getTrangThai()+"',GhiChu='"+b.getGhiChu()+"'";
+                +b.getTrangThai()+"',GhiChu='"+b.getGhiChu()+"' WHERE BanID='"+b.getBanID()+"'";
         try {
             pst = conn.prepareStatement(sql);
             pst.executeUpdate();
@@ -57,31 +57,38 @@ public  class banDaoImpl implements banDao{
             Logger.getLogger(banDaoImpl.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-
+// viết code ở chỗ delete bàn chưa được
+// cần xem lại cách viết chỗ này nhé   
     @Override
     public void delete(String banID) {
         conn = DBConnection.getConnection();
-        String sql = "DELETE FROM tb_ban WHERE BanID='"+banID+"'";
+        String sql = "DELETE FROM tb_ban WHERE BanID=?";
         try {
             pst = conn.prepareStatement(sql);
+            pst.setString(1, banID);
             pst.executeUpdate();
         } catch (SQLException e) {
             Logger.getLogger(banDaoImpl.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-
+// viết code ở chỗ get bàn chưa được
+// cần xem lại cách viết chỗ này nhé   
+    
     @Override
     public ban getBan(String banID) {
         ban b = null;
         conn = DBConnection.getConnection();
-        String sql = "SELECT * FROM tb_ban WHERE BanID='"+banID+"'";
+        //dùng câu lệnh sql thêm các giá thêm vào dùng dấu ?
+        String sql = "SELECT * FROM tb_ban WHERE BanID= ?";
         try {
             pst = conn.prepareStatement(sql);
+            //chuỗi truyền vào được thêm ở đây
+            pst.setString(1,banID);
             rs = pst.executeQuery();
             while (rs.next()) {                
                 b = new ban(rs.getString("BanID"), 
-                rs.getString("TenBan"), rs.getString("KhuVucID"),
-                rs.getInt("TrangThai"), rs.getString("GhiChu"));                
+                            rs.getString("TenBan"), rs.getString("KhuVucID"),
+                            rs.getInt("TrangThai"), rs.getString("GhiChu"));                
             }            
         } catch (SQLException e) {
             Logger.getLogger(banDaoImpl.class.getName()).log(Level.SEVERE, null, e);
@@ -99,7 +106,9 @@ public  class banDaoImpl implements banDao{
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             while (rs.next()) {                
-                b = new ban(rs.getString("BanID"), rs.getString("TenBan"), rs.getString("KhuVucID"), rs.getInt("TrangThai"), rs.getString("GhiChu"));
+                b = new ban(rs.getString("BanID"), rs.getString("TenBan"), 
+                            rs.getString("KhuVucID"), rs.getInt("TrangThai"), 
+                            rs.getString("GhiChu"));
                 list.add(b);
             }
         }catch (SQLException e) {
@@ -108,10 +117,18 @@ public  class banDaoImpl implements banDao{
         return list;
     }   
     public static void main(String[] args) {
-        ban b = new ban("B1","Ban 1" , "KV1", 0, null);
-        banDaoImpl banDao = new banDaoImpl();
-        banDao.add(b);
-        System.out.println("ok"); 
-                
+//        ban b = new ban("B1","Ban 1" , "KV1", 0, "OK");
+//        banDaoImpl banDao = new banDaoImpl();
+//        banDao.delete("B1");
+//        ban b1 = banDao.getBan("B1");
+//        System.out.println(b1.toString());
+//        
+//        banDao.add(b);
+//        List<ban> l = new ArrayList<>();
+//        l = banDao.getAll();
+//        for (ban i : l) {
+//                System.out.println(i.toString());
+//        }
+        System.out.println("ok");                 
     }        
 }

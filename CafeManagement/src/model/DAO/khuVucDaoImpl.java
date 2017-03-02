@@ -28,7 +28,7 @@ public class khuVucDaoImpl implements khuVucDao{
     @Override
     public void add(khuVuc kv) {
         conn = DBConnection.getConnection();
-        String sql = "INSERT INTO tb_khuvuc(KhuVucID,TenKhuVuc) VALUES (?,?)";
+        String sql = "INSERT INTO tb_khuvuc VALUES (?,?)";
         try {
             pst = conn.prepareStatement(sql);
             pst.setString(1, kv.getKhuVucID());
@@ -42,8 +42,8 @@ public class khuVucDaoImpl implements khuVucDao{
     @Override
     public void update(khuVuc kv) {
         conn = DBConnection.getConnection();
-        String sql = "UPDATE tb_khuvuc SET TenKhuVuc="+kv.getTenKhuVuc()
-                     +"WHERE KhuVucID="+kv.getKhuVucID();
+        String sql = "UPDATE tb_khuvuc SET TenKhuVuc='"+kv.getTenKhuVuc()
+                     +"' WHERE KhuVucID='"+kv.getKhuVucID()+"'";
         try {
             pst = conn.prepareStatement(sql);
             pst.executeUpdate();
@@ -55,9 +55,10 @@ public class khuVucDaoImpl implements khuVucDao{
     @Override
     public void delete(String kvID) {
         conn = DBConnection.getConnection();
-        String sql = "DELETE FROM tb_khuvuc WHERE KhuVucID="+kvID;
+        String sql = "DELETE FROM tb_khuvuc WHERE KhuVucID = ? ";
         try {
             pst = conn.prepareStatement(sql);
+            pst.setString(1, kvID);
             pst.executeUpdate();
         } catch (SQLException e) {
             Logger.getLogger(khuVucDaoImpl.class.getName()).log(Level.SEVERE, null, e);
@@ -68,9 +69,10 @@ public class khuVucDaoImpl implements khuVucDao{
     public khuVuc getKhuVuc(String kvID) {
         khuVuc kv = null;
         conn = DBConnection.getConnection();
-        String sql = "SELECT * FROM tb_khuvuc WHERE khuVucID="+kvID;
+        String sql = "SELECT * FROM tb_khuvuc WHERE khuVucID = ?";
         try {
             pst = conn.prepareStatement(sql);
+            pst.setString(1, kvID);
             rs = pst.executeQuery();
             while (rs.next()) {                
                 kv = new khuVuc(rs.getString("KhuVucID"), rs.getString("TenKhuVuc"));                
@@ -101,8 +103,16 @@ public class khuVucDaoImpl implements khuVucDao{
     }
     public static void main(String[] args){
         khuVucDaoImpl khuVucDao = new khuVucDaoImpl();
-        khuVuc kv = new khuVuc("KV1", "Khu Vuc 1");
-        khuVucDao.add(kv);
-        System.out.println("OK");
+//        khuVuc kv = new khuVuc("KV1", "Khu Vuc 1");
+//        khuVucDao.add(kv);
+//        khuVuc kv = khuVucDao.getKhuVuc("KV1");
+//        System.out.println(kv.toString());
+//        List<khuVuc> l = new ArrayList<>();
+//        l = khuVucDao.getAll();
+//        for (khuVuc i: l){
+//            System.out.println(i);
+//        }
+//        khuVucDao.delete("KV1");
+//        System.out.println("OK");
     }
 }

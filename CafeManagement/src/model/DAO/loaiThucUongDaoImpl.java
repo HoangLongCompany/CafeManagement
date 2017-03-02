@@ -29,7 +29,7 @@ public class loaiThucUongDaoImpl implements loaiThucUongDao{
     @Override
     public void add(loaiThucUong loaiTU) {
         conn = DBConnection.getConnection();
-        String sql ="INSERT INTO tb_loaithucuong(LoaiThucUongID,TenLoaiThucUong) VALUES (?,?)";
+        String sql ="INSERT INTO tb_loaithucuong VALUES (?,?)";
         try {
             pst= conn.prepareStatement(sql);
             pst.setString(1, loaiTU.getLoaiThucUongID());
@@ -56,9 +56,10 @@ public class loaiThucUongDaoImpl implements loaiThucUongDao{
     @Override
     public void delete(String loaiTUID) {
         conn = DBConnection.getConnection();
-        String sql = "DELETE FROM tb_loaithucuong WHERE LoaiThucUongID='"+loaiTUID+"'";
+        String sql = "DELETE FROM tb_loaithucuong WHERE LoaiThucUongID = ? ";
         try {
             pst = conn.prepareStatement(sql);
+            pst.setString(1, loaiTUID);
             pst.executeUpdate();
         } catch (SQLException e) {
             Logger.getLogger(banDaoImpl.class.getName()).log(Level.SEVERE, null, e);
@@ -69,9 +70,10 @@ public class loaiThucUongDaoImpl implements loaiThucUongDao{
     public loaiThucUong getLoaiThucUong(String loaiTUID) {
         loaiThucUong loaiTU = null;
         conn = DBConnection.getConnection();
-        String sql = "SELECT * FROM tb_loaithucuong WHERE LoaiThucUongID='"+loaiTUID+"'";
+        String sql = "SELECT * FROM tb_loaithucuong WHERE LoaiThucUongID = ? ";
         try {
             pst = conn.prepareStatement(sql);
+            pst.setString(1, loaiTUID);
             rs = pst.executeQuery();
             while (rs.next()) {                
             loaiTU = new loaiThucUong(rs.getString("LoaiThucUongID"), rs.getString("TenLoaiThucUong"));
@@ -87,11 +89,11 @@ public class loaiThucUongDaoImpl implements loaiThucUongDao{
         List<loaiThucUong> list = new ArrayList<>();
         conn = DBConnection.getConnection();
         String sql = "SELECT * FROM tb_loaithucuong";
+        loaiThucUong loaiTU = null;
         try {
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             while (rs.next()) {   
-            loaiThucUong loaiTU = new loaiThucUong();
             loaiTU = new loaiThucUong(rs.getString("LoaiThucUongID"), rs.getString("TenLoaiThucUong"));
             list.add(loaiTU);
             }            
@@ -102,8 +104,16 @@ public class loaiThucUongDaoImpl implements loaiThucUongDao{
     }
     public static void main(String[] args) {
         loaiThucUongDaoImpl loaiThucUongDao = new loaiThucUongDaoImpl();
-        loaiThucUong l = new loaiThucUong("TS","Tra Sua");
-        loaiThucUongDao.add(l);
+//        loaiThucUong l = new loaiThucUong("TS","Tra Sua");
+//        loaiThucUongDao.add(l);
+//        loaiThucUong l = loaiThucUongDao.getLoaiThucUong("TS");
+//        System.out.println(l.toString());
+//        List<loaiThucUong> list = new ArrayList<>();
+//        list = loaiThucUongDao.getAll();
+//        for (loaiThucUong i : list){
+//            System.out.println(i.toString());
+//        }
+        loaiThucUongDao.delete("TS");
         System.out.println("ok");
     }
             

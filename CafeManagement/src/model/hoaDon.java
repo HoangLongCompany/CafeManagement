@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -15,7 +16,7 @@ public class hoaDon {
     private String hoaDonID;
     private String loginID;
     private String banID;
-    private String thoiGian;
+    private Date thoiGian;
     private int hieuLuc;
     private int thanhTien;
     private int giamGia;
@@ -26,7 +27,7 @@ public class hoaDon {
         
     }
 
-    public hoaDon(String hoaDonID, String loginID, String banID, String thoiGian, int hieuLuc, int thanhTien, int giamGia, int tongTien, String ghiChu) {
+    public hoaDon(String hoaDonID, String loginID, String banID, Date thoiGian, int hieuLuc, int thanhTien, int giamGia, int tongTien, String ghiChu) {
         this.hoaDonID = hoaDonID;
         this.loginID = loginID;
         this.banID = banID;
@@ -62,11 +63,11 @@ public class hoaDon {
         this.banID = banID;
     }
 
-    public String getThoiGian() {
+    public Date getThoiGian() {
         return thoiGian;
     }
 
-    public void setThoiGian(String thoiGian) {
+    public void setThoiGian(Date thoiGian) {
         this.thoiGian = thoiGian;
     }
 
