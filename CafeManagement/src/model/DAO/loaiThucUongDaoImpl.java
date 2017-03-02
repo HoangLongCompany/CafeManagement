@@ -102,7 +102,7 @@ public class loaiThucUongDaoImpl implements loaiThucUongDao{
     }
     public static void main(String[] args) {
         loaiThucUongDaoImpl loaiThucUongDao = new loaiThucUongDaoImpl();
-        loaiThucUong l = new loaiThucUong("CF","Ca Phe");
+        loaiThucUong l = new loaiThucUong("TS","Tra Sua");
         loaiThucUongDao.add(l);
         System.out.println("ok");
     }
