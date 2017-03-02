@@ -87,11 +87,11 @@ public class loaiThucUongDaoImpl implements loaiThucUongDao{
         List<loaiThucUong> list = new ArrayList<>();
         conn = DBConnection.getConnection();
         String sql = "SELECT * FROM tb_loaithucuong";
+        loaiThucUong loaiTU = null;
         try {
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             while (rs.next()) {   
-            loaiThucUong loaiTU = new loaiThucUong();
             loaiTU = new loaiThucUong(rs.getString("LoaiThucUongID"), rs.getString("TenLoaiThucUong"));
             list.add(loaiTU);
             }            

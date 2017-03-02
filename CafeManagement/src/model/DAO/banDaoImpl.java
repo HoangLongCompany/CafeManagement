@@ -30,7 +30,7 @@ public  class banDaoImpl implements banDao{
     @Override
     public void add(ban b) {
         conn = DBConnection.getConnection();
-        String sql ="INSERT INTO tb_ban(BanID,TenBan,KhuVucID,TrangThai,GhiChu) VALUES (?,?,?,?,?)";
+        String sql ="INSERT INTO tb_ban VALUES (?,?,?,?,?)";
         try {
             pst= conn.prepareStatement(sql);
             pst.setString(1, b.getBanID());
@@ -49,7 +49,7 @@ public  class banDaoImpl implements banDao{
         conn = DBConnection.getConnection();
         String sql = "UPDATE tb_ban SET TenBan='"+b.getTenBan()
                 +"',KhuVucID='"+b.getKhuVucID()+"',TrangThai='"
-                +b.getTrangThai()+"',GhiChu='"+b.getGhiChu()+"'";
+                +b.getTrangThai()+"',GhiChu='"+b.getGhiChu()+"' WHERE BanID='"+b.getBanID()+"'";
         try {
             pst = conn.prepareStatement(sql);
             pst.executeUpdate();
@@ -61,7 +61,7 @@ public  class banDaoImpl implements banDao{
     @Override
     public void delete(String banID) {
         conn = DBConnection.getConnection();
-        String sql = "DELETE FROM tb_ban WHERE BanID='"+banID+"'";
+        String sql = "DELETE FROM tb_ban WHERE BanID="+banID;
         try {
             pst = conn.prepareStatement(sql);
             pst.executeUpdate();
@@ -74,14 +74,14 @@ public  class banDaoImpl implements banDao{
     public ban getBan(String banID) {
         ban b = null;
         conn = DBConnection.getConnection();
-        String sql = "SELECT * FROM tb_ban WHERE BanID='"+banID+"'";
+        String sql = "SELECT * FROM tb_ban WHERE BanID="+banID;
         try {
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             while (rs.next()) {                
                 b = new ban(rs.getString("BanID"), 
-                rs.getString("TenBan"), rs.getString("KhuVucID"),
-                rs.getInt("TrangThai"), rs.getString("GhiChu"));                
+                            rs.getString("TenBan"), rs.getString("KhuVucID"),
+                            rs.getInt("TrangThai"), rs.getString("GhiChu"));                
             }            
         } catch (SQLException e) {
             Logger.getLogger(banDaoImpl.class.getName()).log(Level.SEVERE, null, e);
@@ -99,7 +99,9 @@ public  class banDaoImpl implements banDao{
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             while (rs.next()) {                
-                b = new ban(rs.getString("BanID"), rs.getString("TenBan"), rs.getString("KhuVucID"), rs.getInt("TrangThai"), rs.getString("GhiChu"));
+                b = new ban(rs.getString("BanID"), rs.getString("TenBan"), 
+                            rs.getString("KhuVucID"), rs.getInt("TrangThai"), 
+                            rs.getString("GhiChu"));
                 list.add(b);
             }
         }catch (SQLException e) {
@@ -108,7 +110,7 @@ public  class banDaoImpl implements banDao{
         return list;
     }   
     public static void main(String[] args) {
-        ban b = new ban("B1","Ban 1" , "KV1", 0, null);
+        ban b = new ban("B1","Ban 1" , "KV1", 0, "OK");
         banDaoImpl banDao = new banDaoImpl();
         banDao.add(b);
         System.out.println("ok"); 

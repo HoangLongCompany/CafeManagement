@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Objects;
 public class nhanVien {
     private String nhanVienID;
     private String hoTen;
-    private String ngaySinh;
+    private Date ngaySinh;
     private int gioiTinh;
     private int soCMND;
     private String soDT;
@@ -25,7 +26,7 @@ public class nhanVien {
         
     }
 
-    public nhanVien(String nhanVienID, String hoTen, String ngaySinh, int gioiTinh, int soCMND, String soDT, String diaChi, String caLam) {
+    public nhanVien(String nhanVienID, String hoTen, Date ngaySinh, int gioiTinh, int soCMND, String soDT, String diaChi, String caLam) {
         this.nhanVienID = nhanVienID;
         this.hoTen = hoTen;
         this.ngaySinh = ngaySinh;
@@ -52,11 +53,11 @@ public class nhanVien {
         this.hoTen = hoTen;
     }
 
-    public String getNgaySinh() {
+    public Date getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(String ngaySinh) {
+    public void setNgaySinh(Date ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 

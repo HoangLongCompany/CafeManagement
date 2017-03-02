@@ -42,8 +42,8 @@ public class khuVucDaoImpl implements khuVucDao{
     @Override
     public void update(khuVuc kv) {
         conn = DBConnection.getConnection();
-        String sql = "UPDATE tb_khuvuc SET TenKhuVuc="+kv.getTenKhuVuc()
-                     +"WHERE KhuVucID="+kv.getKhuVucID();
+        String sql = "UPDATE tb_khuvuc SET TenKhuVuc='"+kv.getTenKhuVuc()
+                     +"' WHERE KhuVucID='"+kv.getKhuVucID()+"'";
         try {
             pst = conn.prepareStatement(sql);
             pst.executeUpdate();
