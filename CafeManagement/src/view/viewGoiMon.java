@@ -9,12 +9,12 @@ package view;
  *
  * @author BaoLong
  */
-public class formQuanLyBan extends javax.swing.JFrame {
+public class viewGoiMon extends javax.swing.JFrame {
 
     /**
-     * Creates new form formQuanLyBan
+     * Creates new form formGoiMon
      */
-    public formQuanLyBan() {
+    public viewGoiMon() {
         initComponents();
     }
 
@@ -27,100 +27,103 @@ public class formQuanLyBan extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btGroup = new javax.swing.ButtonGroup();
         pn = new javax.swing.JPanel();
         pn1 = new javax.swing.JPanel();
-        toolBar = new javax.swing.JToolBar();
-        btThemBan = new javax.swing.JButton();
-        btSuaBan = new javax.swing.JButton();
-        btXoaBan = new javax.swing.JButton();
-        pn3 = new javax.swing.JPanel();
+        rbTatCa = new javax.swing.JRadioButton();
+        rbTheoLoai = new javax.swing.JRadioButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
         pn2 = new javax.swing.JPanel();
+        scrollPn = new javax.swing.JScrollPane();
+        tbGoiMon = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("CafeManagement_Gọi Món");
 
-        pn1.setBackground(new java.awt.Color(204, 204, 255));
+        pn.setBackground(new java.awt.Color(185, 185, 255));
 
-        toolBar.setBackground(new java.awt.Color(204, 204, 255));
-        toolBar.setFloatable(false);
-        toolBar.setRollover(true);
+        pn1.setBackground(new java.awt.Color(185, 185, 255));
 
-        btThemBan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/1488801680_Plus__Orange.png"))); // NOI18N
-        btThemBan.setText("Thêm Bàn");
-        btThemBan.setFocusable(false);
-        btThemBan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btThemBan.setMaximumSize(new java.awt.Dimension(85, 21));
-        toolBar.add(btThemBan);
+        rbTatCa.setBackground(new java.awt.Color(185, 185, 255));
+        btGroup.add(rbTatCa);
+        rbTatCa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        rbTatCa.setText("Tất cả");
 
-        btSuaBan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/1488802703_edit.png"))); // NOI18N
-        btSuaBan.setText("Sửa bàn");
-        btSuaBan.setFocusable(false);
-        btSuaBan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btSuaBan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolBar.add(btSuaBan);
+        rbTheoLoai.setBackground(new java.awt.Color(185, 185, 255));
+        btGroup.add(rbTheoLoai);
+        rbTheoLoai.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        rbTheoLoai.setText("Theo loại");
 
-        btXoaBan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/1488802717_DeleteRed.png"))); // NOI18N
-        btXoaBan.setText("Xóa Bàn");
-        btXoaBan.setFocusable(false);
-        btXoaBan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btXoaBan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolBar.add(btXoaBan);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cafe", "Trà sữa", "Sinh tố", "Kem" }));
 
         javax.swing.GroupLayout pn1Layout = new javax.swing.GroupLayout(pn1);
         pn1.setLayout(pn1Layout);
         pn1Layout.setHorizontalGroup(
             pn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pn1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(rbTatCa, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(rbTheoLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pn1Layout.setVerticalGroup(
             pn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pn1Layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addGroup(pn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbTatCa)
+                    .addComponent(rbTheoLoai)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15))
         );
 
-        pn3.setBackground(new java.awt.Color(204, 204, 255));
+        pn2.setBackground(new java.awt.Color(185, 185, 255));
 
-        javax.swing.GroupLayout pn3Layout = new javax.swing.GroupLayout(pn3);
-        pn3.setLayout(pn3Layout);
-        pn3Layout.setHorizontalGroup(
-            pn3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 273, Short.MAX_VALUE)
-        );
-        pn3Layout.setVerticalGroup(
-            pn3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 441, Short.MAX_VALUE)
-        );
-
-        pn2.setBackground(new java.awt.Color(255, 255, 255));
+        tbGoiMon.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        scrollPn.setViewportView(tbGoiMon);
 
         javax.swing.GroupLayout pn2Layout = new javax.swing.GroupLayout(pn2);
         pn2.setLayout(pn2Layout);
         pn2Layout.setHorizontalGroup(
             pn2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 611, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scrollPn, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pn2Layout.setVerticalGroup(
             pn2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(pn2Layout.createSequentialGroup()
+                .addComponent(scrollPn, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout pnLayout = new javax.swing.GroupLayout(pn);
         pn.setLayout(pnLayout);
         pnLayout.setHorizontalGroup(
             pnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnLayout.createSequentialGroup()
-                .addComponent(pn3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(pn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnLayout.setVerticalGroup(
             pnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnLayout.createSequentialGroup()
                 .addComponent(pn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pn3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(pn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -154,32 +157,34 @@ public class formQuanLyBan extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(formQuanLyBan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewGoiMon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(formQuanLyBan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewGoiMon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(formQuanLyBan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewGoiMon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(formQuanLyBan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewGoiMon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new formQuanLyBan().setVisible(true);
+                new viewGoiMon().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btSuaBan;
-    private javax.swing.JButton btThemBan;
-    private javax.swing.JButton btXoaBan;
+    private javax.swing.ButtonGroup btGroup;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel pn;
     private javax.swing.JPanel pn1;
     private javax.swing.JPanel pn2;
-    private javax.swing.JPanel pn3;
-    private javax.swing.JToolBar toolBar;
+    private javax.swing.JRadioButton rbTatCa;
+    private javax.swing.JRadioButton rbTheoLoai;
+    private javax.swing.JScrollPane scrollPn;
+    private javax.swing.JTable tbGoiMon;
     // End of variables declaration//GEN-END:variables
 }

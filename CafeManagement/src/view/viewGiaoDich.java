@@ -9,12 +9,12 @@ package view;
  *
  * @author BaoLong
  */
-public class formGiaoDich extends javax.swing.JFrame {
+public class viewGiaoDich extends javax.swing.JFrame {
 
     /**
      * Creates new form formGiaoDich
      */
-    public formGiaoDich() {
+    public viewGiaoDich() {
         initComponents();
     }
 
@@ -36,7 +36,7 @@ public class formGiaoDich extends javax.swing.JFrame {
         btNhanVien = new javax.swing.JButton();
         btKhoHang2 = new javax.swing.JButton();
         pnThongKe = new javax.swing.JPanel();
-        btKhoHang = new javax.swing.JPanel();
+        pnQuanLy = new javax.swing.JPanel();
         pn2 = new javax.swing.JPanel();
         btThanhToan = new javax.swing.JPanel();
         btNhanKhach = new javax.swing.JButton();
@@ -53,6 +53,7 @@ public class formGiaoDich extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("CafeManagement_Giao Dịch");
 
         pn.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -123,16 +124,16 @@ public class formGiaoDich extends javax.swing.JFrame {
 
         tabPn.addTab("Thống kê", pnThongKe);
 
-        btKhoHang.setBackground(new java.awt.Color(255, 255, 255));
+        pnQuanLy.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout btKhoHangLayout = new javax.swing.GroupLayout(btKhoHang);
-        btKhoHang.setLayout(btKhoHangLayout);
-        btKhoHangLayout.setHorizontalGroup(
-            btKhoHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pnQuanLyLayout = new javax.swing.GroupLayout(pnQuanLy);
+        pnQuanLy.setLayout(pnQuanLyLayout);
+        pnQuanLyLayout.setHorizontalGroup(
+            pnQuanLyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        btKhoHangLayout.setVerticalGroup(
-            btKhoHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnQuanLyLayout.setVerticalGroup(
+            pnQuanLyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 280, Short.MAX_VALUE)
         );
 
@@ -278,7 +279,7 @@ public class formGiaoDich extends javax.swing.JFrame {
         pnLayout.setHorizontalGroup(
             pnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(tabPn)
-            .addComponent(btKhoHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnQuanLy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnLayout.setVerticalGroup(
@@ -286,7 +287,7 @@ public class formGiaoDich extends javax.swing.JFrame {
             .addGroup(pnLayout.createSequentialGroup()
                 .addComponent(tabPn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btKhoHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnQuanLy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -334,20 +335,21 @@ public class formGiaoDich extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(formGiaoDich.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewGiaoDich.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(formGiaoDich.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewGiaoDich.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(formGiaoDich.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewGiaoDich.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(formGiaoDich.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewGiaoDich.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new formGiaoDich().setVisible(true);
+                new viewGiaoDich().setVisible(true);
             }
         });
     }
@@ -356,7 +358,6 @@ public class formGiaoDich extends javax.swing.JFrame {
     private javax.swing.JButton btBan;
     private javax.swing.JButton btGiaoDich;
     private javax.swing.JButton btGoiMon;
-    private javax.swing.JPanel btKhoHang;
     private javax.swing.JButton btKhoHang2;
     private javax.swing.JButton btNhanKhach;
     private javax.swing.JButton btNhanVien;
@@ -372,6 +373,7 @@ public class formGiaoDich extends javax.swing.JFrame {
     private javax.swing.JPanel pn2;
     private javax.swing.JPanel pnDanhMuc;
     private javax.swing.JPanel pnHoaDon;
+    private javax.swing.JPanel pnQuanLy;
     private javax.swing.JPanel pnThongKe;
     private javax.swing.JTabbedPane tabPn;
     private javax.swing.JTextField tfNgayLapPhieu;

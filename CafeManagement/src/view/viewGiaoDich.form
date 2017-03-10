@@ -3,6 +3,7 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="CafeManagement_Giao D&#x1ecb;ch"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -44,7 +45,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="tabPn" max="32767" attributes="0"/>
-              <Component id="btKhoHang" alignment="0" max="32767" attributes="0"/>
+              <Component id="pnQuanLy" alignment="0" max="32767" attributes="0"/>
               <Component id="pn2" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
@@ -53,7 +54,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="tabPn" min="-2" pref="119" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btKhoHang" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnQuanLy" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="pn2" max="32767" attributes="0"/>
               </Group>
@@ -203,7 +204,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="btKhoHang">
+        <Container class="javax.swing.JPanel" name="pnQuanLy">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
